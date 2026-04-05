@@ -608,11 +608,165 @@
     margin-bottom: 0.5rem;
   }
 
-  /* ========== RESPONSIVE ========== */
+  /* ========== HAMBURGER BUTTON ========== */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    z-index: 200;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile drawer */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 72px; left: 0; right: 0;
+    background: rgba(10,10,10,0.98);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    padding: 1.5rem 2rem 2rem;
+    z-index: 99;
+    flex-direction: column;
+    gap: 0;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-menu .mobile-cta {
+    margin-top: 1rem;
+    background: var(--red);
+    color: var(--white) !important;
+    text-align: center;
+    padding: 0.9rem !important;
+    border-radius: 3px;
+    border-bottom: none !important;
+  }
+
+  /* ========== RESPONSIVE — TABLET (max 900px) ========== */
+  @media (max-width: 900px) {
+    .rolls-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    #menu { padding: 4rem 1.5rem; }
+    #pedido { padding: 4rem 1.5rem; }
+    .form-wrapper { max-width: 100%; }
+  }
+
+  /* ========== RESPONSIVE — MOBILE (max 640px) ========== */
   @media (max-width: 640px) {
-    nav { padding: 0 1.2rem; }
+    /* Navbar */
+    nav {
+      padding: 0 1.2rem;
+      height: 64px;
+    }
     .nav-links { display: none; }
-    .rolls-grid { grid-template-columns: 1fr; }
+    .nav-hamburger { display: flex; }
+    .nav-subtitle { display: none; }
+    .nav-divider { display: none; }
+    .nav-kanji { font-size: 1.5rem; }
+
+    /* Hero */
+    .hero {
+      padding: 5rem 1.2rem 3rem;
+      min-height: 100svh;
+    }
+    .hero-img-wrapper {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-img-placeholder { font-size: 2rem; }
+    .hero-eyebrow {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+    }
+    .hero-tagline {
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      padding: 0 0.5rem;
+    }
+    .hero-btn {
+      padding: 0.85rem 2rem;
+      font-size: 0.75rem;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* About strip */
+    .about-strip { padding: 2rem 1.2rem; }
+    .about-strip p { font-size: 0.82rem; line-height: 1.8; }
+    .about-notice { padding: 1rem 1.1rem; font-size: 0.78rem; }
+
+    /* Menu section */
+    #menu { padding: 3rem 1rem; }
+    .section-title { font-size: clamp(1.4rem, 6vw, 2rem); }
+    .rolls-grid {
+      grid-template-columns: 1fr;
+      gap: 1.1rem;
+      padding: 0 0.2rem;
+    }
+    .card-body { padding: 1.1rem; }
+    .card-name-es { font-size: 1rem; }
+    .card-name-jp { font-size: 0.78rem; }
+    .card-ingredients { font-size: 0.75rem; }
+    .card-footer { padding: 0.75rem 1.1rem; }
+    .card-price { font-size: 1rem; }
+
+    /* Form section */
+    #pedido { padding: 3rem 1rem; }
+    .form-intro { font-size: 0.8rem; padding: 1.1rem; line-height: 1.8; }
+    .form-notice { font-size: 0.78rem; padding: 1rem 1.1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    label { font-size: 0.68rem; letter-spacing: 0.15em; }
+    input[type="text"],
+    input[type="tel"],
+    input[type="time"],
+    textarea {
+      font-size: 1rem; /* prevents iOS zoom on focus */
+      padding: 0.8rem 0.9rem;
+    }
+    .btn-submit {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      padding: 1rem;
+    }
+    .form-confirm-note { font-size: 0.78rem; padding: 0.9rem 1rem; }
+
+    /* Footer */
+    footer { padding: 1.5rem 1rem; font-size: 0.68rem; }
+  }
+
+  /* ========== RESPONSIVE — SMALL MOBILE (max 380px) ========== */
+  @media (max-width: 380px) {
+    .hero-title { font-size: 3rem; }
+    .hero-kanji-big { font-size: 1.3rem; }
+    .card-name-jp::after { display: none; }
   }
 </style>
 </head>
@@ -630,7 +784,17 @@
     <li><a href="#pedido">Hacer Pedido</a></li>
     <li><a href="#pedido" class="nav-cta">Ordenar ahora</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menú" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Mobile drawer -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#menu" onclick="closeMenu()">🍣 Menú</a>
+  <a href="#pedido" onclick="closeMenu()">📋 Hacer Pedido</a>
+  <a href="#pedido" class="mobile-cta" onclick="closeMenu()">Ordenar ahora 🍣</a>
+</div>
 
 <!-- =================== HERO =================== -->
 <section class="hero">
@@ -956,6 +1120,18 @@ ${orden}
     const ampm = h >= 12 ? 'PM' : 'AM';
     const h12 = h % 12 || 12;
     return `${h12}:${m.toString().padStart(2,'0')} ${ampm}`;
+  }
+
+  // Hamburger menu
+  function toggleMenu() {
+    const btn = document.getElementById('hamburger');
+    const menu = document.getElementById('mobileMenu');
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobileMenu').classList.remove('open');
   }
 </script>
 
