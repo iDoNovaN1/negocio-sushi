@@ -1,1 +1,963 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>愛 恋 Sushi</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Noto+Serif+JP:wght@300;400;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #c0392b;
+    --gold: #c9a84c;
+    --dark: #0d0d0d;
+    --charcoal: #1a1a1a;
+    --surface: #222222;
+    --surface2: #2a2a2a;
+    --green: #4a7c59;
+    --light: #f0e6d3;
+    --muted: #a89880;
+    --white: #ffffff;
+  }
 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--light);
+    font-family: 'Raleway', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ========== NAVBAR ========== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 72px;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .nav-kanji {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  .nav-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(201,168,76,0.4);
+  }
+
+  .nav-subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    padding: 0.45rem 1.2rem !important;
+    border-radius: 2px;
+    transition: background 0.3s !important;
+  }
+  .nav-cta:hover { background: #a93226 !important; color: var(--white) !important; }
+
+  /* ========== HERO ========== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 50%, rgba(192,57,43,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 80% at 20% 80%, rgba(201,168,76,0.06) 0%, transparent 60%);
+  }
+
+  .hero-img-wrapper {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    position: relative;
+    box-shadow: 0 0 40px rgba(201,168,76,0.25);
+    /* ▸ COLOCA AQUÍ TU IMAGEN DE LOGO/NEGOCIO */
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .hero-img-placeholder {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2.6rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .hero-img-placeholder-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── Para agregar tu imagen real, reemplaza el div.hero-img-wrapper con:
+      <div class="hero-img-wrapper">
+        <img src="TU_IMAGEN.jpg" alt="Logo" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+  ── */
+
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title span {
+    color: var(--red);
+  }
+
+  .hero-kanji-big {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    margin-top: 0.75rem;
+    opacity: 0.9;
+  }
+
+  .hero-tagline {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    max-width: 420px;
+  }
+
+  .hero-btn {
+    margin-top: 2.5rem;
+    display: inline-block;
+    padding: 0.9rem 2.8rem;
+    background: var(--red);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    box-shadow: 0 4px 24px rgba(192,57,43,0.4);
+  }
+  .hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(192,57,43,0.55);
+    background: #a93226;
+  }
+
+  .scroll-hint {
+    margin-top: 3rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(168,152,128,0.5);
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* ========== ABOUT STRIP ========== */
+  .about-strip {
+    background: var(--surface);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .about-strip p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 0.9rem;
+    line-height: 1.9;
+    color: var(--light);
+  }
+
+  .about-strip .highlight { color: var(--gold); font-weight: 600; }
+
+  .about-notice {
+    background: rgba(192,57,43,0.1);
+    border: 1px solid rgba(192,57,43,0.3);
+    border-radius: 4px;
+    max-width: 700px;
+    margin: 1.5rem auto 0;
+    padding: 1.2rem 1.5rem;
+    font-size: 0.82rem;
+    color: var(--light);
+    line-height: 1.8;
+    text-align: left;
+  }
+
+  .about-notice strong { color: var(--red); }
+
+  /* ========== MENU SECTION ========== */
+  #menu {
+    padding: 5rem 2rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--white);
+  }
+
+  .section-line {
+    width: 60px;
+    height: 2px;
+    background: var(--red);
+    margin: 1rem auto 0;
+  }
+
+  /* Category labels */
+  .menu-category {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .category-label {
+    display: inline-block;
+    padding: 0.35rem 1.5rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    border-radius: 20px;
+  }
+
+  /* Grid */
+  .rolls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.75rem;
+    max-width: 1100px;
+    margin: 0 auto 3.5rem;
+  }
+
+  /* Card */
+  .roll-card {
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    position: relative;
+  }
+
+  .roll-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+    border-color: rgba(201,168,76,0.35);
+  }
+
+  /* ── ZONA DE IMAGEN DE ROLLO ── */
+  .card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    background: var(--surface2);
+    /* ▸ Aquí irá la imagen del rollo. Reemplaza con:
+       <img src="imagen_del_rollo.jpg" class="card-img" alt="Nombre del rollo"> */
+  }
+
+  .card-img-placeholder {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #1e1e1e, #2d2d2d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: rgba(201,168,76,0.3);
+  }
+
+  .card-img-placeholder span {
+    font-size: 2.5rem;
+  }
+
+  .card-img-placeholder small {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(168,152,128,0.4);
+  }
+
+  .card-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--red);
+    color: var(--white);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .card-body {
+    padding: 1.4rem;
+  }
+
+  .card-name-es {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.15rem;
+    color: var(--white);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .card-name-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin-top: 0.25rem;
+    letter-spacing: 0.1em;
+    /* ▸ COLOCA AQUÍ EL NOMBRE EN JAPONÉS/CHINO */
+  }
+
+  .card-name-jp::after {
+    content: ' ← agregar nombre en japonés';
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.55rem;
+    color: rgba(201,168,76,0.4);
+    letter-spacing: 0.1em;
+  }
+
+  .card-divider {
+    width: 30px;
+    height: 1px;
+    background: rgba(201,168,76,0.3);
+    margin: 0.9rem 0;
+  }
+
+  .card-ingredients {
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .card-ingredient-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  .card-ingredient-label:first-child { margin-top: 0; }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 1.4rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    background: var(--surface2);
+  }
+
+  .card-price {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+  }
+
+  .card-qty {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(168,152,128,0.6);
+  }
+
+  /* ========== ORDER FORM ========== */
+  #pedido {
+    padding: 5rem 2rem;
+    background: var(--charcoal);
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .form-wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .form-intro {
+    background: var(--surface);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.85rem;
+    line-height: 1.9;
+    color: var(--light);
+  }
+
+  .form-notice {
+    background: rgba(192,57,43,0.08);
+    border: 1px solid rgba(192,57,43,0.25);
+    border-radius: 4px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.82rem;
+    line-height: 1.8;
+    color: #e0c8c0;
+  }
+
+  .form-notice strong { color: #e07060; }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  label {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  label span.required { color: var(--red); }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="time"],
+  textarea {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 3px;
+    padding: 0.85rem 1rem;
+    color: var(--light);
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="time"]:focus,
+  textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+  }
+
+  textarea { resize: vertical; min-height: 90px; }
+
+  input::placeholder, textarea::placeholder {
+    color: rgba(168,152,128,0.45);
+    font-size: 0.85rem;
+  }
+
+  .form-hint {
+    margin-top: 0.4rem;
+    font-size: 0.72rem;
+    color: rgba(168,152,128,0.6);
+    font-style: italic;
+  }
+
+  .form-confirm-note {
+    background: rgba(74,124,89,0.12);
+    border: 1px solid rgba(74,124,89,0.35);
+    border-radius: 4px;
+    padding: 1rem 1.3rem;
+    margin: 1.5rem 0;
+    font-size: 0.82rem;
+    color: #b0d4ba;
+    text-align: center;
+    letter-spacing: 0.05em;
+    line-height: 1.7;
+  }
+
+  .form-confirm-note strong { color: #7ec891; }
+
+  .btn-submit {
+    width: 100%;
+    padding: 1.1rem;
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    border-radius: 3px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(192,57,43,0.35);
+  }
+
+  .btn-submit:hover {
+    background: #a93226;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(192,57,43,0.5);
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: #0a0a0a;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: rgba(168,152,128,0.4);
+  }
+
+  footer .footer-kanji {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.2rem;
+    color: rgba(201,168,76,0.5);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 640px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .rolls-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- =================== NAVBAR =================== -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-kanji">愛 恋</div>
+    <div class="nav-divider"></div>
+    <div class="nav-subtitle">Sushi Artesanal</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#menu">Menú</a></li>
+    <li><a href="#pedido">Hacer Pedido</a></li>
+    <li><a href="#pedido" class="nav-cta">Ordenar ahora</a></li>
+  </ul>
+</nav>
+
+<!-- =================== HERO =================== -->
+<section class="hero">
+  <!-- ▸▸▸ ZONA DE IMAGEN DEL NEGOCIO ◂◂◂
+       Actualmente muestra el texto del logo.
+       Para agregar tu imagen reemplaza el div.hero-img-wrapper con:
+       <div class="hero-img-wrapper">
+         <img src="TU_LOGO.jpg" alt="愛 恋 Sushi" style="width:100%;height:100%;object-fit:cover;">
+       </div>
+  -->
+  <div class="hero-img-wrapper">
+    <div class="hero-img-placeholder">愛恋</div>
+    <span class="hero-img-placeholder-label">[ coloca tu imagen aquí ]</span>
+  </div>
+
+  <p class="hero-eyebrow">Sushi Artesanal · Hecho al Momento</p>
+  <h1 class="hero-title">愛&thinsp;<span>恋</span></h1>
+  <p class="hero-kanji-big">Sushi</p>
+  <p class="hero-tagline">No es sushi cualquiera. Ingredientes frescos, sabores únicos y más de 2 años de experiencia.</p>
+  <a href="#pedido" class="hero-btn">Hacer mi pedido 🍣</a>
+  <p class="scroll-hint">▼ Ver menú</p>
+</section>
+
+<!-- =================== ABOUT STRIP =================== -->
+<div class="about-strip">
+  <p>
+    <span class="highlight">¡Gracias por tu preferencia y confianza!</span><br>
+    🍣 Nuestros rollos son hechos al momento. &nbsp;🔝 Ingredientes frescos y de calidad.<br>
+    ✅ Cuidamos meticulosamente los sabores, olores, cocciones y texturas de nuestros ingredientes.<br>
+    👨🏻‍🍳 Experiencia por más de 2 años. &nbsp;🍥 Variedad en sabores y presentaciones.<br>
+    🔥 <span class="highlight">NO ES SUSHI CUALQUIERA… 💯</span>
+  </p>
+  <div class="about-notice">
+    <strong>⚠️ AVISO IMPORTANTE: ⚠️</strong><br>
+    · Entregas <strong>LOS VIERNES A PARTIR DE LA 1PM.</strong><br>
+    · TODOS LOS ROLLOS INCLUYEN: <strong>12 BOCADOS</strong> Y <strong>3 SALSAS</strong> (S. Soya, S. Tampico y S. Soya con chiles toreados).<br>
+    · Pago en <strong>efectivo</strong> o <strong>transferencia.</strong>
+  </div>
+</div>
+
+<!-- =================== MENÚ =================== -->
+<section id="menu">
+  <div class="section-header">
+    <p class="section-eyebrow">Nuestra selección</p>
+    <h2 class="section-title">El Menú</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- ── CLÁSICOS ── -->
+  <div class="menu-category"><span class="category-label">Clásicos</span></div>
+  <div class="rolls-grid">
+
+    <!-- CAMARÓN -->
+    <div class="roll-card">
+      <div class="card-img-placeholder">
+        <span>🍣</span>
+        <small>[ imagen del rollo ]</small>
+      </div>
+      <div class="card-body">
+        <div class="card-name-es">Camarón</div>
+        <div class="card-name-jp"><!-- 例: エビ --></div>
+        <div class="card-divider"></div>
+        <div class="card-ingredients">
+          <span class="card-ingredient-label">Por dentro:</span>
+          Camarón empanizado y aguacate.
+          <span class="card-ingredient-label">Por fuera:</span>
+          Horneado y empanizado con Q.Philadelphia.
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$140</span>
+        <span class="card-qty">12 bocados</span>
+      </div>
+    </div>
+
+    <!-- ARRACHERA -->
+    <div class="roll-card">
+      <div class="card-img-placeholder">
+        <span>🍣</span>
+        <small>[ imagen del rollo ]</small>
+      </div>
+      <div class="card-body">
+        <div class="card-name-es">Arrachera</div>
+        <div class="card-name-jp"><!-- 例: アラチェラ --></div>
+        <div class="card-divider"></div>
+        <div class="card-ingredients">
+          <span class="card-ingredient-label">Por dentro:</span>
+          Arrachera asada, aguacate, queso manchego.
+          <span class="card-ingredient-label">Por fuera:</span>
+          Horneado y empanizado.
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$140</span>
+        <span class="card-qty">12 bocados</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── DE TEMPORADA ── -->
+  <div class="menu-category"><span class="category-label">De Temporada</span></div>
+  <div class="rolls-grid">
+
+    <!-- MANGO -->
+    <div class="roll-card">
+      <div class="card-img-placeholder">
+        <span>🍣</span>
+        <small>[ imagen del rollo ]</small>
+      </div>
+      <div class="card-body">
+        <div class="card-name-es">Mango</div>
+        <div class="card-name-jp"><!-- 例: マンゴー --></div>
+        <div class="card-divider"></div>
+        <div class="card-ingredients">
+          <span class="card-ingredient-label">Por dentro:</span>
+          Camarón hervido y sazonado, Q.Philadelphia y aguacate.
+          <span class="card-ingredient-label">Por fuera:</span>
+          Forrado con mango.
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$140</span>
+        <span class="card-qty">12 bocados</span>
+      </div>
+    </div>
+
+    <!-- TAKIS FUEGO -->
+    <div class="roll-card">
+      <div class="card-badge">🔥 Spicy</div>
+      <div class="card-img-placeholder">
+        <span>🍣</span>
+        <small>[ imagen del rollo ]</small>
+      </div>
+      <div class="card-body">
+        <div class="card-name-es">Takis Fuego</div>
+        <div class="card-name-jp"><!-- 例: タキスフエゴ --></div>
+        <div class="card-divider"></div>
+        <div class="card-ingredients">
+          <span class="card-ingredient-label">Por dentro:</span>
+          Camarón tempura, aguacate y Takis Fuego.
+          <span class="card-ingredient-label">Por fuera:</span>
+          Empanizado con Q.Philadelphia y Takis Fuego triturados.
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$140</span>
+        <span class="card-qty">12 bocados</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── PREMIUM ── -->
+  <div class="menu-category"><span class="category-label">Premium</span></div>
+  <div class="rolls-grid">
+
+    <!-- RIB EYE -->
+    <div class="roll-card">
+      <div class="card-badge">⭐ Premium</div>
+      <div class="card-img-placeholder">
+        <span>🍣</span>
+        <small>[ imagen del rollo ]</small>
+      </div>
+      <div class="card-body">
+        <div class="card-name-es">Rib Eye</div>
+        <div class="card-name-jp"><!-- 例: リブアイ --></div>
+        <div class="card-divider"></div>
+        <div class="card-ingredients">
+          <span class="card-ingredient-label">Por dentro:</span>
+          Rib Eye asado con mantequilla, tomillo fresco y especias, aguacate. Sin alga Nori.
+          <span class="card-ingredient-label">Por fuera:</span>
+          Forrado con queso manchego gratinado.
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$200</span>
+        <span class="card-qty">12 bocados</span>
+      </div>
+    </div>
+
+    <!-- SALMÓN -->
+    <div class="roll-card">
+      <div class="card-badge">⭐ Premium</div>
+      <div class="card-img-placeholder">
+        <span>🍣</span>
+        <small>[ imagen del rollo ]</small>
+      </div>
+      <div class="card-body">
+        <div class="card-name-es">Salmón</div>
+        <div class="card-name-jp"><!-- 例: サーモン --></div>
+        <div class="card-divider"></div>
+        <div class="card-ingredients">
+          <span class="card-ingredient-label">Por dentro:</span>
+          Salmón ahumado, queso Philadelphia y aguacate.
+          <span class="card-ingredient-label">Por fuera:</span>
+          Forrado con salmón ahumado.
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-price">$190</span>
+        <span class="card-qty">12 bocados</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- =================== FORMULARIO DE PEDIDO =================== -->
+<section id="pedido">
+  <div class="section-header">
+    <p class="section-eyebrow">Haz tu pedido</p>
+    <h2 class="section-title">Ordenar Ahora</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="form-wrapper">
+
+    <div class="form-intro">
+      🍣 Nuestros rollos son hechos al momento.<br>
+      🔝 Ingredientes frescos y de calidad.<br>
+      ✅ Cuidamos meticulosamente los sabores, olores, cocciones y texturas.<br>
+      👨🏻‍🍳 Más de 2 años de experiencia. &nbsp;🍥 Variedad en sabores y presentaciones.<br>
+      🔥 <strong style="color:var(--gold)">NO ES SUSHI CUALQUIERA… 💯</strong>
+    </div>
+
+    <div class="form-notice">
+      <strong>⚠️ AVISO IMPORTANTE: ⚠️</strong><br>
+      · Entregas <strong>LOS VIERNES A PARTIR DE LA 1PM.</strong><br>
+      · Todos los rollos incluyen: <strong>12 bocados</strong> y <strong>3 salsas</strong> (S. Soya, S. Tampico y S. Soya con chiles toreados).<br>
+      · Pago en <strong>efectivo</strong> o <strong>transferencia.</strong>
+    </div>
+
+    <div class="form-group">
+      <label>🍱 Tu Orden <span class="required">*</span></label>
+      <textarea id="orden" placeholder='Ej: "1 rollo Rib Eye, 1 rollo Salmón" o "1 rollo mitad Mango, mitad Takis"' rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>👤 Nombre <span class="required">*</span></label>
+      <input type="text" id="nombre" placeholder="Tu nombre completo">
+    </div>
+
+    <div class="form-group">
+      <label>📱 Número de Teléfono (WhatsApp) <span class="required">*</span></label>
+      <input type="tel" id="telefono" placeholder="Ej: 55 1234 5678">
+    </div>
+
+    <div class="form-group">
+      <label>📍 Lugar de Entrega <span class="required">*</span></label>
+      <input type="text" id="lugar" placeholder="Ej: Edificio de IGE, cafetería, etc.">
+    </div>
+
+    <div class="form-group">
+      <label>🕐 Hora de Entrega</label>
+      <input type="time" id="hora">
+      <p class="form-hint">Recuerda: entregas los viernes a partir de la 1PM.</p>
+    </div>
+
+    <div class="form-group">
+      <label>💬 ¿Alguna indicación adicional?</label>
+      <textarea id="indicaciones" placeholder="Ej: agregar u omitir algún ingrediente, PROMO SUSHI+BEBIDA, etc." rows="3"></textarea>
+    </div>
+
+    <!-- ✅ NOTA DE CONFIRMACIÓN — excelente para reducir pedidos accidentales -->
+    <div class="form-confirm-note">
+      📋 Por favor revisa que tu pedido esté completo y correcto.<br>
+      <strong>¿Todo listo? ¡Presiona ENVIAR para confirmar tu orden! 🍣✅</strong>
+    </div>
+
+    <button class="btn-submit" onclick="enviarPedido()">
+      Enviar Pedido por WhatsApp 💬
+    </button>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer>
+  <span class="footer-kanji">愛 恋</span>
+  Sushi Artesanal · Hecho al momento con amor 🍣
+</footer>
+
+<!-- =================== SCRIPT WHATSAPP =================== -->
+<script>
+  function enviarPedido() {
+    const orden       = document.getElementById('orden').value.trim();
+    const nombre      = document.getElementById('nombre').value.trim();
+    const telefono    = document.getElementById('telefono').value.trim();
+    const lugar       = document.getElementById('lugar').value.trim();
+    const hora        = document.getElementById('hora').value;
+    const indicaciones = document.getElementById('indicaciones').value.trim();
+
+    if (!orden || !nombre || !telefono || !lugar) {
+      alert('⚠️ Por favor completa los campos obligatorios: Orden, Nombre, Teléfono y Lugar de entrega.');
+      return;
+    }
+
+    const horaTexto = hora
+      ? convertirHora12(hora)
+      : 'No especificada';
+
+    const mensaje =
+`🍣 *NUEVO PEDIDO - 愛 恋 Sushi* 🍣
+
+📋 *ORDEN:*
+${orden}
+
+👤 *Nombre:* ${nombre}
+📱 *Teléfono:* ${telefono}
+📍 *Lugar de entrega:* ${lugar}
+🕐 *Hora de entrega:* ${horaTexto}
+💬 *Indicaciones adicionales:* ${indicaciones || 'Ninguna'}
+
+✅ _Pedido enviado desde el sitio web._`;
+
+    const numero = '525658397363';
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+  }
+
+  function convertirHora12(hora24) {
+    const [h, m] = hora24.split(':').map(Number);
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    const h12 = h % 12 || 12;
+    return `${h12}:${m.toString().padStart(2,'0')} ${ampm}`;
+  }
+</script>
+
+</body>
+</html>
